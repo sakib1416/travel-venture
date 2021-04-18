@@ -1,0 +1,20 @@
+.top-banner-container {
+    height:600px;
+    position:relative;
+    background-image: url("../../../images/top-banner.jpg");
+    background-size: cover;
+    opacity: 0.8;
+}
+.top-banner-container::after {
+    height:700px;
+    content:' ';
+    position: absolute;
+    top: 0;
+    width: 28%;
+    right: 0;
+    z-index: 20;
+}
+
+.top-banner-main {
+    padding-top: 200px;
+}
