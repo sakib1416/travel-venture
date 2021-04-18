@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 const AddReview = () => {
     const { register, handleSubmit, formState: { errors }} = useForm();
     const onSubmit = (data) => {
+        data.posted = new Date();
         console.log("Review clicked ", data);
-
         fetch("https://stormy-thicket-62666.herokuapp.com/addReviews", {
             method: "POST",
             headers: {
