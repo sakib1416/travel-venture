@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import threeDay from '../../../images/3-day-tour.jpg'
 
 const ServiceCards = ({service}) => {
@@ -10,7 +11,8 @@ const ServiceCards = ({service}) => {
                     <h5 class="card-title">{service.packageName}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{service.packagePrice}</h6>
                     <p class="card-text">{service.packageDescription}</p>
-                    <a href="#" class="btn btn-primary">See Details</a>
+                    {/* <a href="#" class="btn btn-primary">See Details</a> */}
+                    <Link to={"/service/"+service._id} class="btn btn-primary">See Details</Link>
                 </div>
             </div>
         </div>
