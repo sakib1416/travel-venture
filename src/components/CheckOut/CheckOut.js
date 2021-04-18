@@ -7,7 +7,7 @@ const CheckOut = () => {
     const {id} = useParams();
     const [cart, setCart] = useState([])
     useEffect(()=>{
-        fetch("http://localhost:5000/service/"+id)
+        fetch("https://stormy-thicket-62666.herokuapp.com/service/"+id)
         .then(response => response.json())
         .then(data => setCart(data))
     },[])

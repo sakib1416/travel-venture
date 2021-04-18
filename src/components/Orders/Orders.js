@@ -3,7 +3,7 @@ import OrdersCards from '../OrdersCards/OrdersCards';
 
 const Orders = () => {
     const [orders, setOrders] = useState([]);
-    fetch("http://localhost:5000/orders")
+    fetch("https://stormy-thicket-62666.herokuapp.com/orders")
     .then(response => response.json())
     .then(data => setOrders(data));
     return (

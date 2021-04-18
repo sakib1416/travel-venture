@@ -11,7 +11,7 @@ const Shipment = () => {
     const [shippingData, setShippingData] = useState(null);
     const { register, handleSubmit, errors } = useForm();
     useEffect(()=>{
-        fetch("http://localhost:5000/service/"+id)
+        fetch("https://stormy-thicket-62666.herokuapp.com/service/"+id)
         .then(response => response.json())
         .then(data => setCart(data))
     },[])
@@ -28,7 +28,7 @@ const Shipment = () => {
             orderTime: new Date()
         };
         console.log(orderDetails);
-        fetch("http://localhost:5000/addOrder", {
+        fetch("https://stormy-thicket-62666.herokuapp.com/addOrder", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
