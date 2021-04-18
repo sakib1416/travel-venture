@@ -32,22 +32,8 @@ const Navbar = () => {
                             <Link class="nav-link" to='/dashboard'>Dashboard</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link" to='/addService'>Add Service</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/addReview'>Add Review</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/orders'>Orders</Link>
-                        </li>
-                        <li class="nav-item">
                             <Link class="nav-link" to='/login'>Login</Link>
                         </li>
-                        {
-                            sessionStorage.getItem('token') && <li class="nav-item">
-                            <Link class="nav-link" to='/login'>{loggedInUser.name}</Link>
-                            </li>  
-                        }
                         {
                             loggedInUser.email && <li class="nav-item">
                             <Link class="nav-link" to='/login'>{loggedInUser.name}</Link>

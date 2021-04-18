@@ -7,7 +7,7 @@ const AddAdmin = () => {
     const onSubmit = (data) => {
         data.posted = new Date();
         console.log("admin clicked ", data);
-        fetch("http://localhost:5000/addAdmin", {
+        fetch("https://stormy-thicket-62666.herokuapp.com/addAdmin", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
