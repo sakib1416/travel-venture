@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
 import { useForm } from "react-hook-form";
+import Footer from '../Shared/Footer/Footer';
 
 const AddAdmin = () => {
     const { register, handleSubmit, formState: { errors }} = useForm();
@@ -39,7 +40,8 @@ const AddAdmin = () => {
                         <div className="form-group mt-3 text-right">
                             <button type="submit" className="btn btn-secondary">Add Admin</button>
                         </div>
-                    </form>
+            </form>
+            <Footer></Footer>
         </div>
     );
 };

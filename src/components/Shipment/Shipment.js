@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import { UserContext } from '../../App';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
+import Footer from '../Shared/Footer/Footer';
+import Navbar from '../Shared/Navbar/Navbar';
 
 const Shipment = () => {
     const {id} = useParams();
@@ -44,6 +46,8 @@ const Shipment = () => {
     }
     return (
         <div>
+            <Navbar></Navbar>
+            <div className="m-5 p-5">
             <h1>Put your shipment data here</h1>
             <h5>Price: {cart.packagePrice}</h5>
             <div style = {{display: shippingData ? 'none' : 'block'}} className="col-md-6">
@@ -82,6 +86,8 @@ const Shipment = () => {
                 {/* calling the component to make payment and sending the function to get the payment ID */}
                 <ProcessPayment handlePayment = {handlePaymentSuccess}></ProcessPayment>
             </div>
+            </div>
+            <Footer></Footer>
         </div>
     );
 };

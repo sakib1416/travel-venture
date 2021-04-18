@@ -6,7 +6,7 @@ const ContactUs = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <h1>This is the contact page</h1>
+            <h1 className="m-5 p-5 text-center">This is the contact page</h1>
             <Footer></Footer>
         </div>
     );

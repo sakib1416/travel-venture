@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import OrdersCards from '../OrdersCards/OrdersCards';
+import Footer from '../Shared/Footer/Footer';
+import Navbar from '../Shared/Navbar/Navbar';
 
 const Orders = () => {
     const [orders, setOrders] = useState([]);
@@ -8,10 +10,14 @@ const Orders = () => {
     .then(data => setOrders(data));
     return (
         <div>
-            <h1>Showing all the orders</h1>
-            {
-                orders.map(order => <OrdersCards order={order}></OrdersCards>)
-            }
+            <Navbar></Navbar>
+            <div className="m-5 p-5 text-center">
+                <h1>Showing all the orders</h1>
+                {
+                    orders.map(order => <OrdersCards order={order}></OrdersCards>)
+                }
+            </div>
+            <Footer></Footer>
         </div>
     );
 };

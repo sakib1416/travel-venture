@@ -23,10 +23,12 @@ const Login = () => {
     return (
         <div className="text-center">
             <Navbar></Navbar>
-            <h1>This is the login page</h1>
-            <GoogleButton
-                style ={{marginLeft: '550px'}} onClick={googleSignIn}
-            />
+            <div className ="m-5 p-5"> 
+                <h1 className="ps-5">This is the login page</h1>
+                <GoogleButton
+                    style ={{marginLeft: '450px'}} onClick={googleSignIn}
+                />
+            </div>
             <Footer></Footer>
         </div>
     );

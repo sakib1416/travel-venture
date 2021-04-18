@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const CheckOut = () => {
@@ -14,12 +15,13 @@ const CheckOut = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="text-center mt-3">
+            <div className="text-center m-5 p-5">
                 <h1>Welcome to the checkout page!</h1>
                 <h3>{cart.packageName}</h3>
                 <h5>Package Price: {cart.packagePrice}</h5>
                 <Link to={"/shipment/"+cart._id} class="btn btn-primary">Book this package</Link>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

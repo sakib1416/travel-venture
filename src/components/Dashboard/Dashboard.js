@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
+import Footer from '../Shared/Footer/Footer';
 
 const Dashboard = () => {
     const [authorization, setAuthorization] = useState({});
@@ -66,7 +67,8 @@ const Dashboard = () => {
                     </div>
                 </div>
             </nav>
-            <h1>This is auch dashboard</h1>
+            <h1 className="text-center m-5 p-5">This is auch dashboard</h1>
+            <Footer></Footer>
         </div>
     );
 };
