@@ -1,6 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ReviewCards = ({reviewer}) => {
+    const deleteReview = (id) => {
+        console.log("Delete clicked ", id);
+        //fetching with delete method
+        fetch("http://localhost:5000/delete/review/"+id, {
+            method: "DELETE"
+        })
+        .then(response => response.json())
+        .then(data => console.log("Review Deleted"))
+    }
     return (
         <div className='col-md-4'>
             <div class="card" style={{width: '18rem'}}>
@@ -8,8 +18,9 @@ const ReviewCards = ({reviewer}) => {
                     <h5 class="card-title">{reviewer.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{reviewer.country}</h6>
                     <p class="card-text">{reviewer.review}</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <Link to={"/review/update/"+reviewer._id} className="btn btn-success">Update Review</Link>
+                    <br />
+                    <button onClick={()=>{deleteReview(reviewer._id)}} className="btn btn-danger mt-1">Delete Review</button>
                 </div>
             </div>
         </div>

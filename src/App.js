@@ -6,16 +6,18 @@ import {
 } from "react-router-dom";
 import './App.css';
 import AddAdmin from "./components/AddAdmin/AddAdmin";
-import AddReview from "./components/AddReview/AddReview";
-import AddService from "./components/AddService/AddService";
+import AddReview from "./components/Dashboard/AddReview/AddReview";
+import AddService from "./components/Dashboard/AddService/AddService";
 import CheckOut from "./components/CheckOut/CheckOut";
 import ContactUs from "./components/ContactUs/ContactUs";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import Home from './components/Home/Home/Home';
 import Login from "./components/Login/Login";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Orders from "./components/Orders/Orders";
 import Shipment from "./components/Shipment/Shipment";
+import Update from "./components/Update/Update";
+import UpdateReview from "./components/UpdateReview/UpdateReview";
 
 export const UserContext = createContext();
 
@@ -34,6 +36,9 @@ function App() {
           <PrivateRoute path="/addService">
             <AddService></AddService>
           </PrivateRoute>
+          <PrivateRoute path="/service/update/:id">
+            <Update></Update>
+          </PrivateRoute>
           <PrivateRoute path="/service/:id">
             <CheckOut></CheckOut>
           </PrivateRoute>
@@ -48,6 +53,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/review/update/:id"> 
+            <UpdateReview></UpdateReview>
           </PrivateRoute>
           <PrivateRoute path="/addReview">
             <AddReview></AddReview>

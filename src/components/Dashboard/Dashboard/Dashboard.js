@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../App';
-import Footer from '../Shared/Footer/Footer';
+import { UserContext } from '../../../App';
+import Footer from '../../Shared/Footer/Footer';
 
 const Dashboard = () => {
     const [authorization, setAuthorization] = useState({});

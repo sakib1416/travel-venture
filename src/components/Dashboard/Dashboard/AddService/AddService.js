@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Navbar from '../Shared/Navbar/Navbar';
+import Navbar from '../../../Shared/Navbar/Navbar';
 import { useForm } from "react-hook-form";
-import Footer from '../Shared/Footer/Footer';
+import Footer from '../../../Shared/Footer/Footer';
 
 const AddService = () => {
     const { register, handleSubmit, formState: { errors }} = useForm();
