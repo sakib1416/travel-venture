@@ -3,10 +3,12 @@ import axios from 'axios';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { useForm } from "react-hook-form";
 import Footer from '../../Shared/Footer/Footer';
+import { useHistory } from 'react-router';
 
 const AddService = () => {
     const { register, handleSubmit, formState: { errors }} = useForm();
     const [imageURL, setIMageURL] = useState(null);
+    const history = useHistory();
     const onSubmit = (data) => {
         data.created = new Date();
         data.imageURL = imageURL;
@@ -23,6 +25,7 @@ const AddService = () => {
             console.log(services);
             if(services){
                 alert("Service added successfully");
+                history.push("/");
             }
         })
     }

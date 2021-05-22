@@ -39,9 +39,9 @@ function App() {
           <PrivateRoute path="/service/update/:id">
             <Update></Update>
           </PrivateRoute>
-          <PrivateRoute path="/service/:id">
+          <Route path="/service/:id">
             <CheckOut></CheckOut>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/shipment/:id">
             <Shipment></Shipment>
           </PrivateRoute>

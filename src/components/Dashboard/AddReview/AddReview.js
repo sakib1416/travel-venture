@@ -2,8 +2,10 @@ import React from 'react';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { useForm } from "react-hook-form";
 import Footer from '../../Shared/Footer/Footer';
+import { useHistory } from 'react-router';
 
 const AddReview = () => {
+    const history = useHistory();
     const { register, handleSubmit, formState: { errors }} = useForm();
     const onSubmit = (data) => {
         data.posted = new Date();
@@ -19,6 +21,7 @@ const AddReview = () => {
         .then(reviews => {
             if(reviews) {
                 alert("Review Added");
+                history.push("/");
             }
         })
     }

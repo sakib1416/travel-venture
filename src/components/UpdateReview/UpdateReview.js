@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
+import { useForm } from "react-hook-form";
 
 const UpdateReview = () => {
+    const history = useHistory();
+    const { register, handleSubmit, watch, errors } = useForm();
     const [reviewData, setReviewData] = useState({});
     //getting the review id
     const {id} = useParams();
@@ -29,21 +32,41 @@ const UpdateReview = () => {
         .then(response => response.json())
         .then(result => console.log("Updated finally"));
     }
+    const onSubmit = data => {
+        const mainReview = {
+            name: data.name,
+            country: data.country,
+            review: data.review
+        }
+        //fetching with the PATCH method
+        fetch("http://localhost:5000/update/review/"+id, {
+            method: "PATCH",
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(mainReview)
+        })
+        .then(response => response.json())
+        .then(result => {
+            alert("Updated Review");
+            history.push("/");
+        });
+    }
     return (
         <div>
             <Navbar></Navbar>
             <div className="mt-5 mb-5">
                 <h1>Review Update page</h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
                 Name: 
-                <input type="text" placeholder={reviewData.name} id="name"/>
+                <input type="text" defaultValue={reviewData.name} {...register('name')} id="name"/>
                 <br />
                 Country: 
-                <input type="text" placeholder={reviewData.country} id="country"/>
+                <input type="text" defaultValue={reviewData.country} {...register('country')} id="country"/>
                 <br />
                 Review: 
-                <input type="text" placeholder={reviewData.review} id="review"/>
+                <input type="text" defaultValue={reviewData.review} {...register('review')} id="review"/>
                 <br />
-                <button onClick={updateReview}>Submit</button>
+                <input type="submit" />
+                </form>
             </div>
             <Footer></Footer>
         </div>
