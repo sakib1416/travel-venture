@@ -18,6 +18,7 @@ import Orders from "./components/Orders/Orders";
 import Shipment from "./components/Shipment/Shipment";
 import Update from "./components/Update/Update";
 import UpdateReview from "./components/UpdateReview/UpdateReview";
+import Testing from "./components/Dashboard/Testing/Testing";
 
 export const UserContext = createContext();
 
@@ -60,6 +61,9 @@ function App() {
           <PrivateRoute path="/addReview">
             <AddReview></AddReview>
           </PrivateRoute>
+          <Route path="/single/service/:id">
+            <Testing></Testing>
+          </Route>
           <Route exact path = "/">
             <Home></Home>
           </Route>

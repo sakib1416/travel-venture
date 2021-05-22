@@ -39,6 +39,7 @@ const CheckOut = () => {
                 <Link to={"/shipment/"+cart._id} class="btn btn-primary">Book this package</Link>
                 <br />
                 <div className="mt-2">
+                    <Link to={"/single/service/"+cart._id}>Single Service</Link>
                     <Link to={"/service/update/"+cart._id} className="btn btn-success me-2">Update Service</Link>
                     <button onClick={()=>{deleteService(cart._id)}} class="btn btn-danger">Delete this service</button>
                 </div>
