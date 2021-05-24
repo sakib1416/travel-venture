@@ -6,7 +6,9 @@ import {
   } from "react-router-dom";
 
 const Navbar = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {user, admin} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = user;
+    const [isAdmin, setIsAdmin] = admin;
     return (
         <div>
             <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
@@ -28,16 +30,34 @@ const Navbar = () => {
                         <li class="nav-item">
                             <Link class="nav-link" to='/contact'>Contact Us</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/dashboard'>Dashboard</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/login'>Login</Link>
-                        </li>
                         {
-                            loggedInUser.email && <li class="nav-item">
-                            <Link class="nav-link" to='/login'>{loggedInUser.name}</Link>
-                            </li>  
+                            loggedInUser.email ?
+                                <div className="row" style={{width: '100%'}}>
+                                    <div className="col-md-4">
+                                        <div>
+                                            <li class="nav-item">
+                                            <Link class="nav-link" to='/dashboard'>Dashboard</Link>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div>
+                                            <li class="nav-item">
+                                                <Link class="nav-link" to='/login'>{loggedInUser.name}</Link>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div>
+                                            <li class="nav-item">
+                                                <Link class="nav-link" to='/logout'>Logout</Link>
+                                            </li>
+                                        </div>
+                                    </div>
+                                </div> :
+                            <li class="nav-item">
+                                <Link class="nav-link" to='/login'>Login</Link>
+                            </li>
                         }
                     </ul>
                     </div>

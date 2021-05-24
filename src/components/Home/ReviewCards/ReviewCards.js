@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 
 const ReviewCards = ({reviewer}) => {
+    const {user, admin} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = user;
+    const [isAdmin, setIsAdmin] = admin;
     const deleteReview = (id) => {
         console.log("Delete clicked ", id);
         //fetching with delete method
@@ -18,9 +22,15 @@ const ReviewCards = ({reviewer}) => {
                     <h5 class="card-title">{reviewer.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{reviewer.country}</h6>
                     <p class="card-text">{reviewer.review}</p>
-                    <Link to={"/review/update/"+reviewer._id} className="btn btn-success">Update Review</Link>
-                    <br />
-                    <button onClick={()=>{deleteReview(reviewer._id)}} className="btn btn-danger mt-1">Delete Review</button>
+                    {
+                        isAdmin.length > 0 ? 
+                        <div>
+                            <Link to={"/review/update/"+reviewer._id} className="btn btn-success">Update Review</Link>
+                            <br />
+                            <button onClick={()=>{deleteReview(reviewer._id)}} className="btn btn-danger mt-1">Delete Review</button>
+                        </div> :
+                        <button>See Details</button>
+                    }
                 </div>
             </div>
         </div>

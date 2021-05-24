@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import './App.css';
-import AddAdmin from "./components/AddAdmin/AddAdmin";
+
 import AddReview from "./components/Dashboard/AddReview/AddReview";
 import AddService from "./components/Dashboard/AddService/AddService";
 import CheckOut from "./components/CheckOut/CheckOut";
@@ -19,13 +19,15 @@ import Shipment from "./components/Shipment/Shipment";
 import Update from "./components/Update/Update";
 import UpdateReview from "./components/UpdateReview/UpdateReview";
 import Testing from "./components/Dashboard/Testing/Testing";
+import AddAdmin from "./components/Dashboard/AddAdmin/AddAdmin";
 
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [isAdmin, setIsAdmin] = useState("");
   return (
-    <UserContext.Provider value = {[loggedInUser,setLoggedInUser]}>
+    <UserContext.Provider value = {{user: [loggedInUser,setLoggedInUser], admin: [isAdmin, setIsAdmin]}}>
       <Router>
         <Switch>
           <Route path="/login">
@@ -49,11 +51,11 @@ function App() {
           <PrivateRoute path="/orders">
             <Orders></Orders>
           </PrivateRoute>
-          <PrivateRoute path="/admin">
-            <AddAdmin></AddAdmin>
-          </PrivateRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/addAdmin">
+            <AddAdmin></AddAdmin>
           </PrivateRoute>
           <PrivateRoute path="/review/update/:id"> 
             <UpdateReview></UpdateReview>

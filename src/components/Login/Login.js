@@ -7,7 +7,9 @@ import { UserContext } from '../../App';
 import { handleGoogleSignIn } from './LoginManager';
 
 const Login = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {user, admin} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = user;
+    const [isAdmin, setIsAdmin] = admin;
     const history = useHistory();
     const location = useLocation();
     let {from} = location.state || { from: {pathname: "/"}};

@@ -6,7 +6,9 @@ import { UserContext } from '../../../App';
     
 
 const PrivateRoute = ({children, ...rest}) => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {user, admin} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = user;
+    const [isAdmin, setIsAdmin] = admin;
     
     const isLoggedIn = () => {
       const token = sessionStorage.getItem('token');

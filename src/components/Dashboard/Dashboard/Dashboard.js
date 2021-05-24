@@ -2,10 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import Footer from '../../Shared/Footer/Footer';
+import Navbar from '../../Shared/Navbar/Navbar';
 
 const Dashboard = () => {
     const [authorization, setAuthorization] = useState({});
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {user, admin} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = user;
+    const [isAdmin, setIsAdmin] = admin;
     useEffect(()=>{
         fetch("https://stormy-thicket-62666.herokuapp.com/isAdmin", {
         method: "POST",
@@ -18,56 +21,22 @@ const Dashboard = () => {
     .then(admin => {
         console.log(admin);
         if(admin){
-            setAuthorization(loggedInUser.email);
+            setIsAdmin(loggedInUser.email);
         }
     })
     },[])
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
-                <div class="container-fluid">
-                    {/* <a class="navbar-brand" href="/"></a> */}
-                    <Link class="navbar-brand" to='/'>Travel Venture</Link>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse nav-links" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                        {/* <a class="nav-link" href="/">Home</a> */}
-                            <Link class="nav-link" to='/'>Home</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/'>Services</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/contact'>Contact Us</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/dashboard'>Dashboard</Link>
-                        </li>
-                        <li class="nav-item">
-                                <Link class="nav-link" to='/addService'>Add Service</Link>
-                        </li>
-                        <li class="nav-item">
-                                <Link class="nav-link" to='/addReview'>Add Review</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/orders'>Orders</Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to='/login'>Login</Link>
-                        </li>
-                        {
-                            loggedInUser.email && <li class="nav-item">
-                            <Link class="nav-link" to='/login'>{loggedInUser.name}</Link>
-                            </li>  
-                        }
-                    </ul>
-                    </div>
-                </div>
-            </nav>
-            <h1 className="text-center m-5 p-5">This is auch dashboard</h1>
+            <Navbar></Navbar>
+            <h1 className="text-center mt-5 pt-5">This is your dashboard</h1>
+            <Link className="text-center mt-5" to="/orders"><h4>See Orders</h4></Link>
+            {
+                isAdmin.length  && <div className="text-center">
+                <Link to="/addService"><h4>Add Service</h4></Link>
+                <Link to="/addReview"><h4>Add Review</h4></Link>
+                <Link to="/addAdmin"><h4>Add Admin</h4></Link>
+            </div>
+            }
             <Footer></Footer>
         </div>
     );
