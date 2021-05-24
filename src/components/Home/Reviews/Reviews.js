@@ -21,7 +21,7 @@ import ReviewCards from '../ReviewCards/ReviewCards';
 const Reviews = () => {
     const [reviewers, setReviewers] = useState([]);
 
-    fetch('https://stormy-thicket-62666.herokuapp.com/reviews')
+    fetch('https://floating-coast-84242.herokuapp.com/reviews')
     .then(response => response.json())
     .then(data=> setReviewers(data));
     return (

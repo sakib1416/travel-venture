@@ -11,7 +11,7 @@ const AddService = () => {
         data.created = new Date();
         data.imageURL = imageURL;
         //console.log("Add package clicked ", data);
-        fetch("https://stormy-thicket-62666.herokuapp.com/addService", {
+        fetch("https://floating-coast-84242.herokuapp.com/addService", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

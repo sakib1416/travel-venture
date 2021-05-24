@@ -15,7 +15,7 @@ const Update = () => {
     const [updateData, setUpdateData] = useState({});
     //fetching the service and setting the data using useState
     useEffect(()=>{
-        fetch("http://localhost:5000/service/"+id)
+        fetch("https://floating-coast-84242.herokuapp.com/service/"+id)
         .then(response => response.json())
         .then(data => setUpdateData(data))
     }, [])
@@ -44,7 +44,7 @@ const Update = () => {
             description: data.description
         };
         console.log(service);
-        fetch("http://localhost:5000/update/"+id, {
+        fetch("https://floating-coast-84242.herokuapp.com/update/"+id, {
             method: "PATCH",
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(service)

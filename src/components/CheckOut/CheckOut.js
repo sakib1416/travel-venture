@@ -11,7 +11,7 @@ const CheckOut = () => {
     const [cart, setCart] = useState([])
     //fetching the single cart/service setting the data using useState
     useEffect(()=>{
-        fetch("https://stormy-thicket-62666.herokuapp.com/service/"+id)
+        fetch("https://floating-coast-84242.herokuapp.com/service/"+id)
         .then(response => response.json())
         .then(data => setCart(data))
     },[])
@@ -19,7 +19,7 @@ const CheckOut = () => {
     const deleteService = (id) => {
         console.log("Delete clicked!! ", id);
         //fetching with delete method
-        fetch("http://localhost:5000/delete/"+id, {
+        fetch("https://floating-coast-84242.herokuapp.com/delete/"+id, {
             method: "DELETE"
         })
         .then(response => response.json())

@@ -12,7 +12,7 @@ const UpdateReview = () => {
     const {id} = useParams();
     //fetching the review and setting the data using useState
     useEffect(()=>{
-        fetch("http://localhost:5000/review/"+id)
+        fetch("https://floating-coast-84242.herokuapp.com/review/"+id)
         .then(response => response.json())
         .then(data => setReviewData(data))
     }, [])
@@ -24,7 +24,7 @@ const UpdateReview = () => {
         //putting them together in a object
         const mainReview = {name, country, review};
         //fetching with the PATCH method
-        fetch("http://localhost:5000/update/review/"+id, {
+        fetch("https://floating-coast-84242.herokuapp.com/update/review/"+id, {
             method: "PATCH",
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(mainReview)
@@ -39,7 +39,7 @@ const UpdateReview = () => {
             review: data.review
         }
         //fetching with the PATCH method
-        fetch("http://localhost:5000/update/review/"+id, {
+        fetch("https://floating-coast-84242.herokuapp.com/update/review/"+id, {
             method: "PATCH",
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(mainReview)

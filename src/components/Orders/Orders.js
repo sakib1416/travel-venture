@@ -5,7 +5,7 @@ import Navbar from '../Shared/Navbar/Navbar';
 
 const Orders = () => {
     const [orders, setOrders] = useState([]);
-    fetch("https://stormy-thicket-62666.herokuapp.com/orders")
+    fetch("https://floating-coast-84242.herokuapp.com/orders")
     .then(response => response.json())
     .then(data => setOrders(data));
     return (

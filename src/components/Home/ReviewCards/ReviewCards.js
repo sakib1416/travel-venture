@@ -9,7 +9,7 @@ const ReviewCards = ({reviewer}) => {
     const deleteReview = (id) => {
         console.log("Delete clicked ", id);
         //fetching with delete method
-        fetch("http://localhost:5000/delete/review/"+id, {
+        fetch("https://floating-coast-84242.herokuapp.com/delete/review/"+id, {
             method: "DELETE"
         })
         .then(response => response.json())

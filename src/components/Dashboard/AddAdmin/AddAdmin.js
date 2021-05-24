@@ -24,7 +24,7 @@ const AddAdmin = () => {
         formData.append('name', info.name);
         formData.append('email', info.email);
         //fetching the API from backend, note that there is no JSON.stringify because for file you can not  do that
-        fetch('http://localhost:5000/addAdmin', {
+        fetch('https://floating-coast-84242.herokuapp.com/addAdmin', {
             method: 'POST',
             body: formData
         })
