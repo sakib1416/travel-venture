@@ -9,22 +9,6 @@ const Dashboard = () => {
     const {user, admin} = useContext(UserContext);
     const [loggedInUser, setLoggedInUser] = user;
     const [isAdmin, setIsAdmin] = admin;
-    useEffect(()=>{
-        fetch("https://floating-coast-84242.herokuapp.com/isAdmin", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({email: loggedInUser.email})
-    })
-    .then(response => response.json())
-    .then(admin => {
-        console.log(admin);
-        if(admin){
-            setIsAdmin(loggedInUser.email);
-        }
-    })
-    },[])
     return (
         <div>
             <Navbar></Navbar>

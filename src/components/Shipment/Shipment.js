@@ -9,7 +9,8 @@ import Navbar from '../Shared/Navbar/Navbar';
 const Shipment = () => {
     const {id} = useParams();
     const [cart, setCart] = useState([]);
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {user, admin} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = user;
     const [shippingData, setShippingData] = useState(null);
     const { register, handleSubmit, errors } = useForm();
     useEffect(()=>{

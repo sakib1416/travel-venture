@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 
@@ -28,6 +29,8 @@ const CheckOut = () => {
             history.push("/");
         })
     }
+    const {user, admin} = useContext(UserContext);
+    const [isAdmin, setIsAdmin] = admin;
     return (
         <div>
             <Navbar></Navbar>
@@ -38,11 +41,12 @@ const CheckOut = () => {
                 <h5>Package Price: {cart.packagePrice}</h5>
                 <Link to={"/shipment/"+cart._id} class="btn btn-primary">Book this package</Link>
                 <br />
-                <div className="mt-2">
-                    <Link to={"/single/service/"+cart._id}>Single Service</Link>
+                {
+                    isAdmin && <div className="mt-2">
                     <Link to={"/service/update/"+cart._id} className="btn btn-success me-2">Update Service</Link>
                     <button onClick={()=>{deleteService(cart._id)}} class="btn btn-danger">Delete this service</button>
                 </div>
+                }
             </div>
             <Footer></Footer>
         </div>
