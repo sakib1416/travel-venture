@@ -20,6 +20,7 @@ import Update from "./components/Update/Update";
 import UpdateReview from "./components/UpdateReview/UpdateReview";
 import Testing from "./components/Dashboard/Testing/Testing";
 import AddAdmin from "./components/Dashboard/AddAdmin/AddAdmin";
+import SignUp from "./components/Login/SignUp/SignUp";
 
 export const UserContext = createContext();
 
@@ -32,6 +33,9 @@ function App() {
         <Switch>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/signup">
+            <SignUp></SignUp>
           </Route>
           <PrivateRoute path="/contact">
             <ContactUs></ContactUs>

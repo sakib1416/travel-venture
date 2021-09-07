@@ -1,11 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../../../App';
 import './Navbar.css';
+import {handleSignOut} from '../../Login/LoginManager';
 import {
-    Link
+    Link,
+    useHistory 
   } from "react-router-dom";
 
 const Navbar = () => {
+    const history = useHistory()
     const {user, admin} = useContext(UserContext);
     const [loggedInUser, setLoggedInUser] = user;
     const [isAdmin, setIsAdmin] = admin;
@@ -25,6 +28,13 @@ const Navbar = () => {
         }
     })
     },[])
+    const signOut = () => {
+        handleSignOut()
+        .then(response => {
+            setLoggedInUser(response);
+            history.push("/");
+        })
+    }
     return (
         <div>
             <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
@@ -66,13 +76,13 @@ const Navbar = () => {
                                     <div className="col-md-4">
                                         <div>
                                             <li class="nav-item">
-                                                <Link class="nav-link" to='/logout'>Logout</Link>
+                                                <Link class="nav-link" onClick={signOut}>Logout</Link>
                                             </li>
                                         </div>
                                     </div>
                                 </div> :
                             <li class="nav-item">
-                                <Link class="nav-link" to='/login'>Login</Link>
+                                <Link class="nav-link" to='/login'>Login/Signup</Link>
                             </li>
                         }
                     </ul>

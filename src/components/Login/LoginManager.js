@@ -31,10 +31,70 @@ export const handleGoogleSignIn = () => {
     });
 }
 
+export const handlePasswordSignUp = (name, email, password) => {
+  //console.log(name, email, password);
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Signed in 
+      let user = userCredential.user;
+      updateUsername(name)
+      //console.log(user);
+      return user;
+      // ...
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode, errorMessage)
+      // ..
+    });
+}
+
+export const passwordSignIn = (email, password) => {
+  return firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    const {displayName, email} = userCredential.user;
+    const signedInUser = {name: displayName, email};
+    //console.log(signedInUser);
+    storeAuthToken();
+    return signedInUser;
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+}
+
+export const handleSignOut = () => {
+  return firebase.auth().signOut()
+  .then(response => {
+    const signedInUser = {
+      name: '',
+      email: ''
+    };
+    sessionStorage.setItem('token', '');
+    return signedInUser;
+  })
+}
+
 const storeAuthToken = () => {
     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
         sessionStorage.setItem('token', idToken);
       }).catch(function(error) {
         // Handle error
       });
+}
+
+const updateUsername = (name) => {
+  const user = firebase.auth().currentUser;
+  user.updateProfile({
+    displayName: name
+  })
+  .then(response => {
+    console.log("user name updated");
+  })
+  .catch(error => {
+    console.log("There is an error", error);
+  })
 }
