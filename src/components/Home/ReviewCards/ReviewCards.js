@@ -22,7 +22,7 @@ const ReviewCards = ({reviewer}) => {
                     <h5 class="card-title">{reviewer.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{reviewer.country}</h6>
                     <p class="card-text">{reviewer.review}</p>
-                    {
+                    {/* {
                         isAdmin.length > 0 ? 
                         <div>
                             <Link to={"/review/update/"+reviewer._id} className="btn btn-success">Update Review</Link>
@@ -30,7 +30,7 @@ const ReviewCards = ({reviewer}) => {
                             <button onClick={()=>{deleteReview(reviewer._id)}} className="btn btn-danger mt-1">Delete Review</button>
                         </div> :
                         <button>See Details</button>
-                    }
+                    } */}
                 </div>
             </div>
         </div>

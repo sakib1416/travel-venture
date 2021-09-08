@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { UserContext } from '../../App';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const Shipment = () => {
+    const history = useHistory();
     const {id} = useParams();
     const [cart, setCart] = useState([]);
     const {user, admin} = useContext(UserContext);
@@ -41,7 +42,8 @@ const Shipment = () => {
         .then(response => response.json())
         .then(purchased => {
             if(purchased) {
-                alert("Your order has been successful")
+                alert("Your order has been successful");
+                history.push("/orders");
             }
         })
     }

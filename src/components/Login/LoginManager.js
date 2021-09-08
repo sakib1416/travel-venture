@@ -36,9 +36,9 @@ export const handlePasswordSignUp = (name, email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in 
+      updateUsername(name);
       let user = userCredential.user;
-      updateUsername(name)
-      //console.log(user);
+      console.log(user);
       return user;
       // ...
     })

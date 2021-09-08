@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { useForm } from "react-hook-form";
@@ -22,16 +22,35 @@ if(!firebase.apps.length) {
 
 const SignUp = () => {
     const history = useHistory();
+    const [checkUser, setCheckUser] = useState({});
     const {register, handleSubmit, formState:{errors}} = useForm({resolver: yupResolver(schema)});
     const submitForm = (data) => {
         const name = `${data.firstName} ${data.lastName}`;
         //console.log(name, data.email, data.password);
         handlePasswordSignUp(name, data.email, data.password)
         .then(response => {
-            //console.log(response);
+            response.isAdmin = false;
+            const {displayName, email, isAdmin} = response;
+            const realUser = {displayName, email, isAdmin};
+            console.log(realUser);
+            setCheckUser(realUser);
             history.push("/");
         })
     }
+    useEffect(()=>{
+        fetch("https://floating-coast-84242.herokuapp.com/addUser", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(checkUser)
+    })
+    .then(response => response.json())
+    .then(user => {
+        console.log(user);
+    })
+    }, [checkUser])
+    
     return (
         <div className="text-center">
             <Navbar></Navbar>

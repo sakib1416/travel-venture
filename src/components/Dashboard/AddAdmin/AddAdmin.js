@@ -1,61 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
+import { handlePasswordSignUp } from '../../Login/LoginManager';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 
 const AddAdmin = () => {
-    const [info, setInfo] = useState({});
-    const [file, setFile] = useState({});
-    const handleBlur = (e) => {
-        //updating newInfo with previous info
-        const newInfo = {...info};
-        //getting the value for name and email separately 
-        newInfo[e.target.name] = e.target.value;
-        setInfo(newInfo);
-    }
-    const handleFileChange = (e) => {
-        //getting the uploaded file
-        const newFile = e.target.files[0];
-        setFile(newFile);
-    }
-    const handleSubmit = () => {
-        //creating the formData and appending file and name and email from the info object 
-        const formData = new FormData()
-        formData.append('file', file);
-        formData.append('name', info.name);
-        formData.append('email', info.email);
-        //fetching the API from backend, note that there is no JSON.stringify because for file you can not  do that
-        fetch('https://floating-coast-84242.herokuapp.com/addAdmin', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => {
-            console.error(error)
+    const [checkAdmin, setCheckAdmin] = useState({});
+    const history = useHistory();
+    const {register, handleSubmit, formState:{errors}} = useForm();
+    const submitForm = (data) => {
+        console.log(data);
+        const name = `${data.firstName} ${data.lastName}`;
+        handlePasswordSignUp(name, data.email, data.password)
+        .then(response => {
+            response.isAdmin = true;
+            const {displayName, email, isAdmin} = response;
+            const realUser = {displayName, email, isAdmin};
+            console.log(realUser);
+            setCheckAdmin(realUser);
+            history.push("/");
         })
     }
+    useEffect(()=>{
+        fetch("https://floating-coast-84242.herokuapp.com/addAdmin", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(checkAdmin)
+    })
+    .then(response => response.json())
+    .then(user => {
+        console.log(user);
+    })
+    }, [checkAdmin])
     return (
         <div>
             <Navbar></Navbar>
-            <h1>Add an Admin</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(submitForm)}>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input onBlur={handleBlur} type="text" class="form-control" name="name" placeholder="Enter Name"/>
+                    <label for="exampleInputFirstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" {...register("firstName")} placeholder="First Name"/>
                     
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input onBlur={handleBlur} type="email" class="form-control" name="email" placeholder="Email"/>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="exampleInputLastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" {...register("lastName")} placeholder="Last Name"/>
+                    
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Choose Image</label>
-                    <input onChange={handleFileChange} type="file" class="form-control" placeholder="Picture"/>
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" name="email" {...register("email")} placeholder="Enter email"/>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" {...register("password")} placeholder="Password"/>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputConfirmPassword1">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirmPassword" {...register("confirmPassword")} placeholder="Confirm Password"/>
+                    <p>{errors.confirmPassword && "Password must match"}</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
             <Footer></Footer>
         </div>

@@ -21,12 +21,13 @@ import UpdateReview from "./components/UpdateReview/UpdateReview";
 import Testing from "./components/Dashboard/Testing/Testing";
 import AddAdmin from "./components/Dashboard/AddAdmin/AddAdmin";
 import SignUp from "./components/Login/SignUp/SignUp";
+import Admin from "./components/Dashboard/Admin/Admin";
 
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  const [isAdmin, setIsAdmin] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
   return (
     <UserContext.Provider value = {{user: [loggedInUser,setLoggedInUser], admin: [isAdmin, setIsAdmin]}}>
       <Router>
@@ -37,9 +38,9 @@ function App() {
           <Route path="/signup">
             <SignUp></SignUp>
           </Route>
-          <PrivateRoute path="/contact">
+          <Route path="/contact">
             <ContactUs></ContactUs>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/addService">
             <AddService></AddService>
           </PrivateRoute>
@@ -58,9 +59,12 @@ function App() {
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
-          <PrivateRoute path="/addAdmin">
+          <Route path="/addAdmin">
             <AddAdmin></AddAdmin>
-          </PrivateRoute>
+          </Route>
+          <Route path = "/admin">
+            <Admin></Admin>
+          </Route>
           <PrivateRoute path="/review/update/:id"> 
             <UpdateReview></UpdateReview>
           </PrivateRoute>

@@ -24,7 +24,7 @@ const Navbar = () => {
     .then(admin => {
         console.log(admin);
         if(admin){
-            setIsAdmin(loggedInUser.email);
+            setIsAdmin(admin);
         }
     })
     },[])
@@ -60,18 +60,19 @@ const Navbar = () => {
                             loggedInUser.email ?
                                 <div className="row" style={{width: '100%'}}>
                                     <div className="col-md-4">
-                                        <div>
-                                            <li class="nav-item">
-                                            <Link class="nav-link" to='/dashboard'>Dashboard</Link>
-                                            </li>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div>
-                                            <li class="nav-item">
-                                                <Link class="nav-link" to='/login'>{loggedInUser.name}</Link>
-                                            </li>
-                                        </div>
+                                        {
+                                            (isAdmin.isAdmin && loggedInUser.email) ? 
+                                            <div>
+                                                <li class="nav-item">
+                                                <Link class="nav-link" to='/dashboard'>Admin Dashboard</Link>
+                                                </li>
+                                            </div> :
+                                            <div>
+                                                <li class="nav-item">
+                                                <Link class="nav-link" to='/dashboard'>User Dashboard</Link>
+                                                </li>
+                                            </div>
+                                        }
                                     </div>
                                     <div className="col-md-4">
                                         <div>
@@ -85,6 +86,12 @@ const Navbar = () => {
                                 <Link class="nav-link" to='/login'>Login/Signup</Link>
                             </li>
                         }
+                        {/* {
+                            (isAdmin.isAdmin && loggedInUser.email) && 
+                            <li class="nav-item">
+                                <Link class="nav-link" to='/login'>Dashboard Admin</Link>
+                            </li>
+                        } */}
                     </ul>
                     </div>
                 </div>

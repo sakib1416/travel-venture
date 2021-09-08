@@ -31,6 +31,7 @@ const CheckOut = () => {
     }
     const {user, admin} = useContext(UserContext);
     const [isAdmin, setIsAdmin] = admin;
+    const [loggedInUser, setLoggedInUser] = user;
     return (
         <div>
             <Navbar></Navbar>
@@ -42,7 +43,7 @@ const CheckOut = () => {
                 <Link to={"/shipment/"+cart._id} class="btn btn-primary">Book this package</Link>
                 <br />
                 {
-                    isAdmin && <div className="mt-2">
+                    isAdmin.isAdmin && <div className="mt-2">
                     <Link to={"/service/update/"+cart._id} className="btn btn-success me-2">Update Service</Link>
                     <button onClick={()=>{deleteService(cart._id)}} class="btn btn-danger">Delete this service</button>
                 </div>
