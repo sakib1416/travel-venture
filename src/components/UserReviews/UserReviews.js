@@ -9,7 +9,7 @@ const UserReviews = () => {
     const [loggedInUser, setLoggedInUser] = user;
     const [fetchedReviews, setFetchedReviews] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/user/reviews", {
+        fetch("https://floating-coast-84242.herokuapp.com/user/reviews", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

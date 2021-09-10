@@ -22,7 +22,7 @@ const CheckOut = () => {
 
     //fetching the reviews for this service
     useEffect(()=>{
-        fetch("http://localhost:5000/services/reviews/"+id)
+        fetch("https://floating-coast-84242.herokuapp.com/services/reviews/"+id)
         .then(response => response.json())
         .then(review => {
             setReviews(review);
@@ -49,7 +49,7 @@ const CheckOut = () => {
     useEffect(()=>{
         const checkOrder = {orderID: id, userEmail: loggedInUser.email};
         console.log(checkOrder);
-        fetch("http://localhost:5000/order", {
+        fetch("https://floating-coast-84242.herokuapp.com/order", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
