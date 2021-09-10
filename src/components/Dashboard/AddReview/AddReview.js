@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { useForm } from "react-hook-form";
 import Footer from '../../Shared/Footer/Footer';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
+import { UserContext } from '../../../App';
 
 const AddReview = () => {
     const history = useHistory();
+    const {id} = useParams();
+    const {user, admin} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = user;
+    const [reviewedService, setReviewedService] = useState({});
     const { register, handleSubmit, formState: { errors }} = useForm();
+
+    //fetching the service which is going to be reviewed
+    useEffect(()=>{
+        fetch("https://floating-coast-84242.herokuapp.com/service/"+id)
+        .then(response => response.json())
+        .then(service => {
+            console.log(service);
+            setReviewedService(service);
+        })
+    }, [id])
     const onSubmit = (data) => {
+        data.serviceName = reviewedService.packageName;
+        data.serviceID = reviewedService._id;
         data.posted = new Date();
+        data.reviewerEmail = loggedInUser.email;
         console.log("Review clicked ", data);
         fetch("https://floating-coast-84242.herokuapp.com/addReviews", {
             method: "POST",
@@ -31,13 +49,8 @@ const AddReview = () => {
             <h1>Add Review in this page</h1>
             <form className="p-3" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group m-1">
-                            <input type="text" name="name" placeholder="Your Name" className="form-control" {...register('name', { required: true })} />
+                            <input type="text" name="reviewer" defaultValue={loggedInUser.name} className="form-control" {...register('reviewer', { required: true })} />
                             {errors.name && <span className="text-danger">This field is required</span>}
-
-                        </div>
-                        <div className="form-group m-2">
-                            <input type="text" name="country" placeholder="Your country" className="form-control" {...register('country', { required: true })} />
-                            {errors.country && <span className="text-danger">This field is required</span>}
 
                         </div>
                         <div class="form-group mt-2">

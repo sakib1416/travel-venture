@@ -27,7 +27,7 @@ const Navbar = () => {
             setIsAdmin(admin);
         }
     })
-    },[])
+    },[loggedInUser.email, setIsAdmin])
     const signOut = () => {
         handleSignOut()
         .then(response => {

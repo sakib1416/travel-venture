@@ -26,7 +26,7 @@ const Reviews = () => {
     .then(data=> setReviewers(data));
     return (
         <div className="text-center mt-5">
-            <h1>This is review section dynamic</h1>
+            <h1>Latest Review By Our Users</h1>
             <div className="row mt-3 cards">
                 {
                     reviewers.map(reviewer => <ReviewCards reviewer={reviewer}></ReviewCards>)

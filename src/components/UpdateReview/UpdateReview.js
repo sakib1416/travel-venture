@@ -47,7 +47,7 @@ const UpdateReview = () => {
         .then(response => response.json())
         .then(result => {
             alert("Updated Review");
-            history.push("/");
+            history.push("/reviews");
         });
     }
     return (
@@ -56,12 +56,6 @@ const UpdateReview = () => {
             <div className="mt-5 mb-5">
                 <h1>Review Update page</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                Name: 
-                <input type="text" defaultValue={reviewData.name} {...register('name')} id="name"/>
-                <br />
-                Country: 
-                <input type="text" defaultValue={reviewData.country} {...register('country')} id="country"/>
-                <br />
                 Review: 
                 <input type="text" defaultValue={reviewData.review} {...register('review')} id="review"/>
                 <br />

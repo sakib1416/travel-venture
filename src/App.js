@@ -22,6 +22,7 @@ import Testing from "./components/Dashboard/Testing/Testing";
 import AddAdmin from "./components/Dashboard/AddAdmin/AddAdmin";
 import SignUp from "./components/Login/SignUp/SignUp";
 import Admin from "./components/Dashboard/Admin/Admin";
+import UserReviews from "./components/UserReviews/UserReviews";
 
 export const UserContext = createContext();
 
@@ -56,6 +57,9 @@ function App() {
           <PrivateRoute path="/orders">
             <Orders></Orders>
           </PrivateRoute>
+          <PrivateRoute path="/reviews">
+            <UserReviews></UserReviews>
+          </PrivateRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
@@ -68,7 +72,7 @@ function App() {
           <PrivateRoute path="/review/update/:id"> 
             <UpdateReview></UpdateReview>
           </PrivateRoute>
-          <PrivateRoute path="/addReview">
+          <PrivateRoute path="/addReview/:id">
             <AddReview></AddReview>
           </PrivateRoute>
           <Route path="/single/service/:id">
