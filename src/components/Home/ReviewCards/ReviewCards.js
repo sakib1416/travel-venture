@@ -16,7 +16,7 @@ const ReviewCards = ({reviewer}) => {
         .then(data => console.log("Review Deleted"))
     }
     return (
-        <div className='col-md-4'>
+        <div className='col-md-4 col-sm-6'>
             <div class="card" style={{width: '18rem'}}>
                 <div class="card-body">
                     <h5 class="card-title">{reviewer.reviewer}</h5>

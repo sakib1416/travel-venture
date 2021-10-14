@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+body{
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #D9E4EC;
+}
+
 .App {
   text-align: center;
+}
+
+.customButton{
+  background-color: #746C70; 
+  border-color: #746C70;
 }
 
 .App-logo {

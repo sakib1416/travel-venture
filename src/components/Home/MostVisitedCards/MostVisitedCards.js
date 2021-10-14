@@ -2,7 +2,7 @@ import React from 'react';
 
 const MostVisitedCards = ({visited}) => {
     return (
-        <div className='col-md-4'>
+        <div className='col-md-4 col-sm-6'>
             <div class="card" style={{width: '18rem'}}>
                 <img src={visited.image} class="card-img-top" alt="..."/>
                 <h6 class="card-subtitle mt-2 text-muted">{visited.place}</h6>

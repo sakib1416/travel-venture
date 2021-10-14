@@ -68,28 +68,38 @@ const CheckOut = () => {
         <div>
             <Navbar></Navbar>
             <div className="text-center m-5 p-5">
-                <h1>Welcome to the checkout page!</h1>
-                <h3>{cart.packageName}</h3>
-                <img src={cart.imageURL} alt="" />
-                <h5>Package Price: {cart.packagePrice}</h5>
-                <Link to={"/shipment/"+cart._id} class="btn btn-primary">Book this package</Link>
-                <br />
-                {
-                    (userChecked) && 
-                        <Link to={"/addReview/"+cart._id} className="btn btn-success me-2">Leave a review</Link>
-                }
-                {
-                    isAdmin.isAdmin && <div className="mt-2">
-                    <Link to={"/service/update/"+cart._id} className="btn btn-success me-2">Update Service</Link>
-                    <button onClick={()=>{deleteService(cart._id)}} class="btn btn-danger">Delete this service</button>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-10">
+                            <h1>Welcome to the checkout page!</h1>
+                            <h3>{cart.packageName}</h3>
+                            <img style={{width: '80%'}} src={cart.imageURL} alt="" />
+                            <h5>Package Price: {cart.packagePrice}</h5>
+                            <Link to={"/shipment/"+cart._id} class="btn customButton">Book this package</Link>
+                            <br />
+                            {
+                                (userChecked) && 
+                                    <Link to={"/addReview/"+cart._id} className="btn btn-success me-2">Leave a review</Link>
+                            }
+                            {
+                                isAdmin.isAdmin && <div className="mt-2">
+                                <Link to={"/service/update/"+cart._id} className="btn btn-success me-2">Update Service</Link>
+                                <button onClick={()=>{deleteService(cart._id)}} class="btn btn-danger">Delete this service</button>
+                            </div>
+                            }
+                        </div>
+                        <div className="col-md-2">
+                            <div>
+                                <h3>Reviews for this service</h3>
+                                {
+                                    reviews.map(review => <ReviewsSection review = {review}></ReviewsSection>)
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                }
-                <div>
-                    <h3>Reviews for this service</h3>
-                    {
-                        reviews.map(review => <ReviewsSection review = {review}></ReviewsSection>)
-                    }
-                </div>
+                
+                
             </div>
             <Footer></Footer>
         </div>

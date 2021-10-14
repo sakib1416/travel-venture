@@ -1,9 +1,13 @@
 .footer-area{
-    background-color: #b99470;
+    background-color: #5885AF;
 }
 
 .footer-area li{
     padding-bottom: 10px;
+}
+
+a {
+    color: #000000!important;
 }
 
 .social-media .icon{
