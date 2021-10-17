@@ -3,17 +3,17 @@ import colonge from '../../../images/colonge.jpg';
 import MostVisitedCards from '../MostVisitedCards/MostVisitedCards';
 const mostVisited = [
     {
-        'place': 'Colonge Dome',
+        'place': 'Remote Island',
         'description': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, enim!',
         'image': colonge
     },
     {
-        'place': 'Colonge Dome',
+        'place': 'Remote Island',
         'description': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, enim!',
         'image': colonge
     },
     {
-        'place': 'Colonge Dome',
+        'place': 'Remote Island',
         'description': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, enim!',
         'image': colonge
     }

@@ -21,15 +21,17 @@ import ReviewCards from '../ReviewCards/ReviewCards';
 const Reviews = () => {
     const [reviewers, setReviewers] = useState([]);
 
-    fetch('https://floating-coast-84242.herokuapp.com/reviews')
-    .then(response => response.json())
-    .then(data=> setReviewers(data));
+    useEffect(()=>{
+        fetch('https://floating-coast-84242.herokuapp.com/reviews')
+        .then(response => response.json())
+        .then(data=> setReviewers(data));
+    }, [reviewers])
     return (
         <div className="text-center mt-5">
             <h1>Latest Review By Our Users</h1>
             <div className="row mt-3 cards">
                 {
-                    reviewers.map(reviewer => <ReviewCards reviewer={reviewer}></ReviewCards>)
+                    reviewers.map(reviewer => <ReviewCards key={reviewer._id} reviewer={reviewer}></ReviewCards>)
                 }
             </div>
         </div>

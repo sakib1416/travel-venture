@@ -3,6 +3,21 @@
 body{
   font-family: 'Josefin Sans', sans-serif;
   background-color: #D9E4EC;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  /* background-color: #f7f8fc;
+  font-family: "Roboto", sans-serif; */
+  color: #10182f;
+}
+h5{
+  font-size: 24px;
+  color: #424949
+}
+
+.important-text{
+  font-weight: bold;
 }
 
 .App {

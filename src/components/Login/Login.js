@@ -39,7 +39,7 @@ const Login = () => {
             <Navbar></Navbar>
             
             <div className ="m-5 p-5"> 
-                <h1 className="ps-5">This is the login page</h1>
+                <h1 className="ps-5">Login to Explore the world!</h1>
                 <div className="mb-3">
                     <form onSubmit={handleSubmit(submitForm)}>
                         <div class="form-group">

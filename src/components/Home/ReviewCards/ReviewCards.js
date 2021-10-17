@@ -19,9 +19,11 @@ const ReviewCards = ({reviewer}) => {
         <div className='col-md-4 col-sm-6'>
             <div class="card" style={{width: '18rem'}}>
                 <div class="card-body">
-                    <h5 class="card-title">{reviewer.reviewer}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{reviewer.serviceName}</h6>
-                    <p class="card-text">{reviewer.review}</p>
+                    
+                    
+                    <h5 class="card-text mb-3 mt-3">"{reviewer.review}"</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Package Name: <span className="important-text">{reviewer.serviceName}</span></h6>
+                    <p class="card-title">Reviewed By: <span className="important-text">{reviewer.reviewer}</span></p>
                     {/* {
                         isAdmin.length > 0 ? 
                         <div>

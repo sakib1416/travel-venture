@@ -6,12 +6,12 @@ const SpecialOffer = () => {
             <h1>Special Offer from Travel Venture</h1>
             <div class="card mt-3" style={{width: '78rem'}}>
                 <div class="card-header">
-                    Featured
+                    Vacation Package
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
+                    <h5 class="card-title">A week long trip</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn customButton">Learn More</a>
                 </div>
             </div>
         </div>

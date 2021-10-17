@@ -5,6 +5,7 @@ import { UserContext } from '../../App';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 import ReviewsSection from './ReviewsSection';
+import './CheckOut.css';
 
 const CheckOut = () => {
     const history = useHistory();
@@ -71,9 +72,11 @@ const CheckOut = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-10">
-                            <h1>Welcome to the checkout page!</h1>
+                            <h1>Choose your desired package</h1>
                             <h3>{cart.packageName}</h3>
+                            <p>{cart.packageDescription}</p>
                             <img style={{width: '80%'}} src={cart.imageURL} alt="" />
+                            
                             <h5>Package Price: {cart.packagePrice}</h5>
                             <Link to={"/shipment/"+cart._id} class="btn customButton">Book this package</Link>
                             <br />
@@ -88,7 +91,7 @@ const CheckOut = () => {
                             </div>
                             }
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 review-section">
                             <div>
                                 <h3>Reviews for this service</h3>
                                 {

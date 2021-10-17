@@ -5,6 +5,7 @@ import { UserContext } from '../../App';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
+import './Shipment.css';
 
 const Shipment = () => {
     const history = useHistory();
@@ -50,9 +51,10 @@ const Shipment = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="m-5 p-5">
-            <h1>Put your shipment data here</h1>
-            <h5>Price: {cart.packagePrice}</h5>
+            <div className="mt-5 mb-5 pt-5 centered">
+            <h1>Check Out Page</h1>
+            <h3>Package you are going to buy: <span className="important-text">{cart.packageName}</span></h3>
+            <h5>Price: <span className="important-text">{cart.packagePrice}</span></h5>
             <div style = {{display: shippingData ? 'none' : 'block'}} className="col-md-6">
                 <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
@@ -85,7 +87,7 @@ const Shipment = () => {
                 </form>
             </div>
             <div style = {{display: shippingData ? 'block' : 'none'}} className="col-md-6">
-                <h1>Pay here bitte!</h1>
+                <h1>Provide your card details</h1>
                 {/* calling the component to make payment and sending the function to get the payment ID */}
                 <ProcessPayment handlePayment = {handlePaymentSuccess}></ProcessPayment>
             </div>

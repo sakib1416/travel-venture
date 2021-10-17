@@ -48,7 +48,7 @@ const SimpleCardPayment = ({handlePayment}) => {
       };
     return (
         <div>
-            <h1>Simple card payment</h1>
+            <h3>Use strip test payment 424242 and so on</h3>
             <form onSubmit={handleSubmit}>
                 <CardElement />
                 <br/>

@@ -5,6 +5,7 @@ import MostVisited from '../MostVisited/MostVisited';
 import Reviews from '../Reviews/Reviews';
 import Services from '../Services/Services';
 import SpecialOffer from '../SpecialOffer/SpecialOffer';
+import TestCard from '../TestCard/TestCard';
 import TopBanner from '../TopBanner/TopBanner';
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
             <Reviews></Reviews>
             <SpecialOffer></SpecialOffer>
             <MostVisited></MostVisited>
+            {/* <TestCard></TestCard> */}
             <Footer></Footer>
         </div>
     );
