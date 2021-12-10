@@ -2,7 +2,7 @@
 
 This project is available live at: https://travelventure-73d28.web.app/
 
-1. It's possible to book a tour package from the available packages. Login is required.
+* It's possible to book a tour package from the available packages. Login is required.
 
 2. Booking can be confirmed using stripe payment using the testing value 4242 4242 4242 4242
 
