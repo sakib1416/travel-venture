@@ -10,5 +10,5 @@ This project is available live at: https://travelventure-73d28.web.app/
 
 * There are authorization in place where necessarry, users can post a review only after purchasing a package.
 
-* Users can post their reviews, update it and delete it as well. So this website has the CRUD functionality as well.
+* Users can post their reviews, update it and delete it as well. So this website has the CRUD functionality.
 
